@@ -8,4 +8,5 @@ build({
   srcDir: path.resolve(process.cwd(), "src"),
   outDir: path.resolve(process.cwd(), "dist"),
   tsConfig: path.resolve(process.cwd(), "tsconfig.build.json"),
+  declarations: true,
 });

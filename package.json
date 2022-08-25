@@ -1,7 +1,15 @@
 {
   "name": "node-os-walk",
-  "version": "1.0.0",
-  "main": "./dist/index.js",
+  "version": "1.0.1",
+  "main": "./dist/legacy/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
   "license": "MIT",
   "description": "Python's os.walk() implementation for Node.js environments with support for the `for await...of` loops.",
   "author": {
@@ -22,14 +30,13 @@
     "filesystem"
   ],
   "scripts": {
-    "build": "rm -rf ./dist && node ./scripts/build.mjs && yarn generate-declarations",
+    "build": "rm -rf ./dist && node ./scripts/build.mjs",
     "lint": "eslint .",
     "tsc": "tsc --noEmit",
-    "test": "jest --coverage",
-    "generate-declarations": "tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist/types"
+    "test": "jest --coverage"
   },
   "devDependencies": {
-    "@ncpa0cpl/nodepack": "^1.0.0",
+    "@ncpa0cpl/nodepack": "^1.1.0",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.7",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
